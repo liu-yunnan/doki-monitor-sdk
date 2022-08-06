@@ -1,0 +1,87 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Front-end monitor SDK</title>
+</head>
+
+<body>
+  <div id="container">
+    <div class="content">
+      <p style="color:blue ;">test</p>
+      <input type="button" value="点击抛出异常" onclick="errorClick()">
+      <input type="button" value="点击抛出Promise错误" onclick="promiseErrorClick()">
+      <br>
+      <img src="testimg.png" alt="">
+      <input type="button" value="ajax成功请求" onclick="sendSuccess()">
+      <input type="button" value="ajax失败请求" onclick="sendError()">
+      <div style="background: #666;height: 200px;width:100%;"></div>
+    </div>
+
+  </div>
+  <script>
+    function errorClick () {
+      window.someVar.error = 'error'
+    }
+    function promiseErrorClick () {
+      // promise 中报错，
+      new Promise(function (resolve, reject) {
+        window.someVar.error = 'error'
+        // reject('error')
+      }).then(result => {
+        console.log(result)
+      })
+    }
+  </script>
+  <script type="text/javascript" src="texterror.js"></script>
+  <script>
+    function sendSuccess () {
+      let xhr = new XMLHttpRequest
+      xhr.open('GET', '/success', true)
+      xhr.responseType = 'json'
+      xhr.onload = function () {
+        console.log(xhr.response)
+      }
+      xhr.send()
+    }
+    function sendError () {
+      let xhr = new XMLHttpRequest
+      xhr.open('post', '/error', true)
+      xhr.responseType = 'json'
+      xhr.onload = function () {
+        console.log(xhr.response)
+      }
+      xhr.onerror = function (error) {
+        console.log(error)
+      }
+      xhr.send("name=test")
+    }
+  </script>
+  <script>
+    // dom解析完成,即使依赖的资源没有加载完成,也会触发这个事件
+    document.addEventListener('DOMContentLoaded', () => {
+      let start = Date.now()
+      while (Date.now() - start < 1000) { }
+    })
+    document.addEventListener('load', () => {
+      let start = Date.now()
+      while (Date.now() - start < 3000) { }
+    })
+    setTimeout(() => {
+      let content = document.getElementsByClassName('content')[0]
+      let h1 = document.createElement('h1')
+      h1.innerHTML = '最有意义元素'
+      h1.setAttribute('elementtiming', 'meaningful')
+      content.appendChild(h1)
+    }, 2000)
+  </script>
+  <script>
+    setTimeout(() => {
+      history.pushState(null, null, '?page=1')
+    }, 3000)
+  </script>
+</body>
+
+</html>
