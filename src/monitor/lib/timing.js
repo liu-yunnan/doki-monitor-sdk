@@ -86,7 +86,6 @@ export function timing () {
       // console.log('FCP', FCP)
       // console.log('FMP', FMP)
       // console.log('LCP', LCP)
-
       tracker.send({
         kind: 'experience', // 用户体验
         type: 'paint',

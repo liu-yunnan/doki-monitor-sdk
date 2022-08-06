@@ -11,7 +11,6 @@ function getExtraData () {
     userAgent: userAgent.parse(navigator.userAgent).name,
     //用户ID/token等等
     hostname: location.hostname,//主机的域名
-    pathname: location.pathname,//当前页面的路径和文件名
   }
 }
 class SendTracker {

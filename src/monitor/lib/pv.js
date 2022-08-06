@@ -50,10 +50,12 @@ export function pv () {
       referrer: document.referrer,//用户来路地址：地址栏进入、浏览器收藏夹打开会获取到空值
       entryType: entryType,//用户来路方式
       screen: window.screen.width + "X" + window.screen.height,
+      pathname: location.pathname,//当前页面的路径和文件名
     })
   }
   // popstate事件监听
   window.addEventListener('popstate', handler(), true)
+
   // 为 pushState 以及 replaceState 方法添加 Evetn 事件
   let _wr = function (type) {
     let orig = history[type]
@@ -69,6 +71,12 @@ export function pv () {
   history.pushState = _wr('pushState')
   history.replaceState = _wr('replaceState')
 
-  window.addEventListener('pushState', handler(), true)
-  window.addEventListener('replaceState', handler(), true)
+  window.addEventListener('pushState', function () {
+    console.log('pushState')
+    handler()
+  }, true)
+  window.addEventListener('replaceState', function () {
+    console.log('replaceState')
+    handler()
+  }, true)
 }
