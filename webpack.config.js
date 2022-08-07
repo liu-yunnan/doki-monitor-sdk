@@ -35,5 +35,7 @@ module.exports = {
       inject: 'head'
     })
   ],
-  mode: 'development'
+  // mode: 'development',
+  mode: "production",
+  devtool: "source-map",
 }
