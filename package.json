@@ -1,7 +1,6 @@
 {
-  "name": "f-monitor-demo",
-  "version": "1.0.0",
-  "description": "",
+  "name": "doki-monitor-sdk",
+  "version": "0.0.1",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -9,16 +8,15 @@
     "dev": "webpack-dev-server"
   },
   "keywords": [],
-  "author": "",
+  "author": "DoKiDoKi",
   "license": "ISC",
-  "devDependencies": {
-    "html-webpack-plugin": "^5.5.0",
-    "user-agent": "^1.0.4",
-    "webpack": "^5.74.0",
-    "webpack-cli": "^4.10.0",
-    "webpack-dev-server": "^4.9.3"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/liu-yunnan/f-monitor-demo.git"
   },
-  "dependencies": {
-    "@aliyun-sls/web-track-browser": "^0.0.3"
-  }
+  "bugs": {
+    "url": "https://github.com/liu-yunnan/f-monitor-demo/issues"
+  },
+  "homepage": "https://github.com/liu-yunnan/f-monitor-demo#readme",
+  "description": ""
 }
