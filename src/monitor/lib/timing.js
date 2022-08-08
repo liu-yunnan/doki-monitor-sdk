@@ -3,7 +3,7 @@ import onload from '../utils/onload'
 import getLastEvent from '../utils/getLastEvent'
 import getSelector from '../utils/getSelector'
 
-export function timing () {
+export function injectTiming () {
   let FMP, LCP
   //PerformanceObserver.observer方法用于观察传入的参数中指定的性能条目类型的集合
   if (PerformanceObserver) {

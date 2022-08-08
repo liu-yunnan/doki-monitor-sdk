@@ -1,6 +1,6 @@
 import tracker from '../utils/tracker'
 import onload from '../utils/onload'
-export function blankScreen () {
+export function injectBlankScreen () {
   let wrapperElements = ['html', 'body', '#container', '.content']
   let emptyPoints = 0
   function getSelector (element) {

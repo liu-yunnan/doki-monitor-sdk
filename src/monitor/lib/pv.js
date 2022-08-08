@@ -2,7 +2,7 @@ import tracker from '../utils/tracker'
 // PV:页面被浏览的次数
 // UV：24小时内(00:00-24:00)访问的独立用户数 
 
-export function injectpv () {
+export function injectPV () {
   function randomString (len) {
     len = len || 10
     var $chars = 'ABCDEFGHJKMNPQRSTWXYZabcdefhijkmnprstwxyz123456789'
