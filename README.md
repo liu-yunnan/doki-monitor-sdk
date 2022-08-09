@@ -42,7 +42,13 @@ npm install --save doki-monitor-sdk
 
 ```
 //main.js中导入
+// 导入SDK
 import 'doki-monitor-sdk'
+import { injectVueError } from 'doki-monitor-sdk/src/monitor/lib/vueError'
+
+Vue.config.errorHandler = (error, vm, info) => {
+  injectVueError(error, vm, info)
+}
 ```
 
 
