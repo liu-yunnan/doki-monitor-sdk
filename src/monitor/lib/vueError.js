@@ -1,5 +1,11 @@
 import tracker from '../utils/tracker'
-export const injectVueError = (error, vm, info) => {
+export function injectVueError (error, vm, info) {
+  // 获取报错组件名
+  const classifyRE = /(?:^|[-_])(\w)/g
+  const classify = (str) => str.replace(classifyRE, (c) => c.toUpperCase()).replace(/[-_]/g, '')
+  const ROOT_COMPONENT_NAME = '<Root>'
+  const ANONYMOUS_COMPONENT_NAME = '<Anonymous>'
+
   const formatComponentName = (vm, includeFile) => {
     if (!vm) {
       return ANONYMOUS_COMPONENT_NAME
@@ -32,11 +38,6 @@ export const injectVueError = (error, vm, info) => {
   }
   tracker.send(exception)
 
-  // 获取报错组件名
-  const classifyRE = /(?:^|[-_])(\w)/g
-  const classify = (str) => str.replace(classifyRE, (c) => c.toUpperCase()).replace(/[-_]/g, '')
-  const ROOT_COMPONENT_NAME = '<Root>'
-  const ANONYMOUS_COMPONENT_NAME = '<Anonymous>'
 
 
 }
