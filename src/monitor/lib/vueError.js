@@ -1,5 +1,5 @@
 import tracker from '../utils/tracker'
-export function injectVueError (error, vm, info) {
+export const injectVueError = (error, vm, info) => {
   const formatComponentName = (vm, includeFile) => {
     if (!vm) {
       return ANONYMOUS_COMPONENT_NAME
