@@ -92,7 +92,7 @@ export function injectTiming () {
         firstPaint: FP.startTime,
         firstContentfulPaint: FCP.startTime,
         // firstMeaningfulPaint: FMP.startTime,
-        largestContentfulPaint: LCP.startTime,
+        largestContentfulPaint: LCP.startTime || '',
       })
     }, 3000)
   })

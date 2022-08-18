@@ -27,6 +27,20 @@ export function injectResidentTime () {
     })
     console.log(routeList)
   })
+  // 为 pushState 以及 replaceState 方法添加 Evetn 事件
+  let _wr = function (type) {
+    let orig = history[type]
+    return function () {
+      let e = new Event(type)
+      e.arguments = arguments
+      window.dispatchEvent(e)
+      // 注意事件监听在url变更方法调用之前 也就是在事件监听的回调函数中获取的页面链接为跳转前的链接
+      var rv = orig.apply(this, arguments)
+      return rv
+    }
+  }
+  history.pushState = _wr('pushState')
+  history.replaceState = _wr('replaceState')
   // 单页面应用触发 replaceState 时的上报
   window.addEventListener('replaceState', () => {
     recordNextPage()
@@ -50,9 +64,9 @@ export function injectResidentTime () {
     tracker.send({
       kind: 'behavior',//用户行为指标
       type: 'residentTime',//用户停留时间
-      dulations: JSON.stringify(routeList),
+      durations: JSON.stringify(routeList),
     })
-    // debugger
+    debugger
   })
 
 }

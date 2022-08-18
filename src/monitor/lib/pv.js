@@ -27,20 +27,21 @@ export function injectPV () {
     return markUv
   }
   const handler = () => {
-    let entryType = ''
-    switch (window.performance.navigation.type) {
-      case 0:
-        entryType = 'navigate'//网页通过点击链接,地址栏输入,表单提交,脚本操作等方式加载
-        break
-      case 1:
-        entryType = 'reload'//网页通过“重新加载”按钮或者location.reload()方法加载
-        break
-      case 2:
-        entryType = 'back_forward'//网页通过“前进”或“后退”按钮加载
-        break
-      case 255:
-        entryType = 'reserved'//任何其他来源的加载
-    }
+    // let entryType = ''
+    // switch (window.performance.navigation.type) {
+    //   case 0:
+    //     entryType = 'navigate'//网页通过点击链接,地址栏输入,表单提交,脚本操作等方式加载
+    //     break
+    //   case 1:
+    //     entryType = 'reload'//网页通过“重新加载”按钮或者location.reload()方法加载
+    //     break
+    //   case 2:
+    //     entryType = 'back_forward'//网页通过“前进”或“后退”按钮加载
+    //     break
+    //   case 255:
+    //     entryType = 'reserved'//任何其他来源的加载
+    //     break
+    // }
     tracker.send({
       kind: 'behavior',//监控指标的大类：用户行为
       type: 'pv',//小类型 pv
@@ -48,7 +49,7 @@ export function injectPV () {
       rtt: navigator.connection.rtt,//往返时延
       markUv: markUv(),
       referrer: document.referrer,//用户来路地址：地址栏进入、浏览器收藏夹打开会获取到空值
-      entryType: entryType,//用户来路方式
+      entryType: window.performance.navigation.type,//用户来路方式
       screen: window.screen.width + "X" + window.screen.height,
       pathname: location.pathname,//当前页面的路径和文件名
     })
