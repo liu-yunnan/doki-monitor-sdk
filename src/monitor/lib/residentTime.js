@@ -66,7 +66,7 @@ export function injectResidentTime () {
       type: 'residentTime',//用户停留时间
       durations: JSON.stringify(routeList),
     })
-    debugger
+    // debugger
   })
 
 }

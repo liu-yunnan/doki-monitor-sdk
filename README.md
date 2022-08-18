@@ -38,7 +38,7 @@
 npm install --save doki-monitor-sdk
 ```
 
-使用
+Vue2项目中使用
 
 ```
 //main.js中导入
