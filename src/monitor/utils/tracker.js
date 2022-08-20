@@ -16,7 +16,7 @@ function getExtraData () {
 class SendTracker {
   constructor() {
     // this.url = `http://${project}.${host}/logstores/${logStore}/track` //上报路径
-    this.url = '47.103.139.192:3000/sdk_post'
+    this.url = 'http://47.103.139.192:3000/sdk_post'
     this.xhr = new XMLHttpRequest()
   }
   send (data = {}) {
