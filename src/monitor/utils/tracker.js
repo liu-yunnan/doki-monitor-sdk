@@ -34,18 +34,19 @@ class SendTracker {
     //   __logs__: [log]
     // })
     // console.log(body)
-    this.xhr.open('POST', this.url, true)
-    this.xhr.setRequestHeader('Content-type', 'application/json')//请求体内容
-    this.xhr.setRequestHeader('x-log-apiversion', '0.6.0')//版本号
-    this.xhr.setRequestHeader('x-log-bodyrawsize', body.length)//请求体的大小
+    // this.xhr.open('POST', this.url, true)
+    // this.xhr.setRequestHeader('Content-type', 'application/json')//请求体内容
+    // this.xhr.setRequestHeader('x-log-apiversion', '0.6.0')//版本号
+    // this.xhr.setRequestHeader('x-log-bodyrawsize', body.length)//请求体的大小
 
-    this.xhr.onload = function () {
-      // console.log(this.xhr.response)
-    }
-    this.xhr.onerror = function (error) {
-      // console.log(error)
-    }
-    this.xhr.send(body)
+    // this.xhr.onload = function () {
+    //   // console.log(this.xhr.response)
+    // }
+    // this.xhr.onerror = function (error) {
+    //   // console.log(error)
+    // }
+    // this.xhr.send(body)
+    navigator.sendBeacon(this.url, body)
 
   }
 }
