@@ -24,7 +24,7 @@ class SendTracker {
     let log = { ...extraData, ...data }
     //对象的值不能是数字
     for (let key in log) {
-      if (typeof log[key] === 'number') {
+      if (typeof log[key] === 'number' && key !== 'timestamp') {
         log[key] = `${log[key]}`
       }
     }
