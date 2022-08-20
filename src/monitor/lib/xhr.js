@@ -9,7 +9,7 @@ export function injectXHR () {
   //不能使用箭头函数，箭头函数无arguments；箭头函数会改变指向，我们需要将this指向XMLHttpRequest；箭头函数的this绑定的是上一层的this
   XHLHttpRequest.prototype.open = function (method, url, async) {
     // 上报请求无需拦截，否则会造成死循环
-    if (!url.match(/logstores/) && !url.match(/sockjs/)) {
+    if (!url.match(/sdk_post/)) {
       this.logData = { method, url }
     }
     //执行原有的open方法
