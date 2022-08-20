@@ -34,7 +34,7 @@ export function injectJsError () {
   }, true)
   // promiseError
   window.addEventListener('unhandledrejection', (event) => {
-    console.log(event)
+    // console.log(event)
     let reason = event.reason
     let message
     let filename

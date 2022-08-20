@@ -15,7 +15,8 @@ function getExtraData () {
 }
 class SendTracker {
   constructor() {
-    this.url = `http://${project}.${host}/logstores/${logStore}/track` //上报路径
+    // this.url = `http://${project}.${host}/logstores/${logStore}/track` //上报路径
+    this.url = '47.103.139.192:3000/sdk_post'
     this.xhr = new XMLHttpRequest()
   }
   send (data = {}) {
@@ -28,11 +29,12 @@ class SendTracker {
       }
     }
     console.log('log', log)
-    this.xhr.open('POST', this.url, true)
-    let body = JSON.stringify({
-      __logs__: [log]
-    })
+    let body = JSON.stringify(log)
+    // let body = JSON.stringify({
+    //   __logs__: [log]
+    // })
     // console.log(body)
+    this.xhr.open('POST', this.url, true)
     this.xhr.setRequestHeader('Content-type', 'application/json')//请求体内容
     this.xhr.setRequestHeader('x-log-apiversion', '0.6.0')//版本号
     this.xhr.setRequestHeader('x-log-bodyrawsize', body.length)//请求体的大小
