@@ -20,7 +20,7 @@ export function injectXHR () {
   XHLHttpRequest.prototype.send = function (body) {
     if (this.logData) {
       let startTime = Date.now()
-      let handler = (type) => (event) => {
+      let handler = (type) => {
         let duration = Date.now() - startTime//持续时间
         let status = this.status//200 500
         let statusText = this.statusText//OK Server Error
@@ -31,7 +31,7 @@ export function injectXHR () {
           pathname: this.logData.url,//请求路径
           status: status + '-' + statusText,//状态码
           duration,//持续时间
-          response: this.response ? JSON.stringify(this.response) : '',//响应体
+          response: this.response ? JSON.stringify(this.response).substring(0, 20480) : '',//响应体
           params: body || ''//参数
         })
       }
